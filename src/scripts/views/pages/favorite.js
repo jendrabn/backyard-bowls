@@ -22,6 +22,8 @@ const Favorite = {
 
     try {
       const restaurants = await favoriteRestaurantService.list();
+
+      console.log(restaurants);
       if (restaurants && restaurants.length > 0) {
         container.innerHTML =
           '<div class="card-list" id="restaurantList"></div>';
@@ -35,6 +37,7 @@ const Favorite = {
         throw Error("Belum ada data restoran favorit");
       }
     } catch (error) {
+      console.log(error);
       renderError(container, error.message || error);
     }
   },
