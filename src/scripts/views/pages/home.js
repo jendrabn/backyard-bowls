@@ -1,9 +1,9 @@
-import restaurantService from '../../services/restaurant.service';
-import { renderLoading, renderError } from '../../utils/helpers';
+import restaurantService from "../../services/restaurant.service";
+import { renderLoading, renderError } from "../../utils/helpers";
 
 const Home = {
   async render() {
-    document.title = 'Home — Backyard Bowls';
+    document.title = "Home — Backyard Bowls";
     return `
       <hero-component></hero-component>
       <div class="container">
@@ -28,29 +28,31 @@ const Home = {
   },
   async afterRender() {
     await this._renderContent();
-    const searchInput = document.querySelector('.search-input');
+    const searchInput = document.querySelector(".search-input");
 
-    document.querySelector('.btn-search').addEventListener('click', async () => {
-      searchInput.value = '';
-      await this._renderContent();
-    });
+    document
+      .querySelector(".btn-search")
+      .addEventListener("click", async () => {
+        searchInput.value = "";
+        await this._renderContent();
+      });
 
-    searchInput.addEventListener('input', (event) => {
+    searchInput.addEventListener("input", (event) => {
       setTimeout(async () => {
         const { value } = event.target;
         await this._renderContent(value);
       }, 500);
     });
   },
-  async _renderContent(keyword = '') {
-    const container = document.getElementById('mainContent');
+  async _renderContent(keyword = "") {
+    const container = document.getElementById("mainContent");
     renderLoading(container);
     try {
       if (keyword && keyword.length > 0) {
         const { restaurants } = await restaurantService.search(keyword);
         this._renderRestaurants(container, restaurants);
       } else {
-        const { restaurants } = await restaurantService.getAll();
+        const { restaurants } = await restaurantService.list();
         this._renderRestaurants(container, restaurants);
       }
     } catch (error) {
@@ -60,14 +62,14 @@ const Home = {
   _renderRestaurants(container, restaurants) {
     if (restaurants && restaurants.length > 0) {
       container.innerHTML = '<div class="card-list" id="restaurantList"></div>';
-      const restaurantContainer = document.getElementById('restaurantList');
+      const restaurantContainer = document.getElementById("restaurantList");
       restaurants.forEach((restaurant) => {
-        const card = document.createElement('restaurant-item');
+        const card = document.createElement("restaurant-item");
         card.restaurant = restaurant;
         restaurantContainer.appendChild(card);
       });
     } else {
-      throw Error('Data restoran tidak ditemukan');
+      throw Error("Data restoran tidak ditemukan");
     }
   },
 };

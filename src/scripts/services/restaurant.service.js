@@ -1,46 +1,42 @@
-import CONFIG from '../config';
+import CONFIG from "../config";
 
 const { BASE_URL, API_KEY } = CONFIG;
 
-const handleResponse = (response) => response.text().then((text) => {
-  const data = text && JSON.parse(text);
-  if (!response.ok) {
-    const error = data || response.statusText;
-    return Promise.reject(error);
-  }
-  return data;
-});
+const handleResponse = (response) =>
+  response.json().then((data) => {
+    if (!response.ok) {
+      const error = (data && data.message) || response.statusText;
 
+      return Promise.reject(error);
+    }
+    return data;
+  });
+
+// Function for fetch API
+// https://www.dicoding.com/academies/163/tutorials/7358?from=7351
 const restaurantService = {
-  async getAll() {
-    const response = await fetch(`${BASE_URL}/list`);
-    const data = await handleResponse(response);
-    return data;
+  list() {
+    return fetch(`${BASE_URL}/list`).then(handleResponse);
   },
-  async getById(id) {
-    const response = await fetch(`${BASE_URL}/detail/${id} `);
-    const data = await handleResponse(response);
-    return data;
+
+  detail(id) {
+    return fetch(`${BASE_URL}/detail/${id} `).then(handleResponse);
   },
-  async search(keyword) {
-    const response = await fetch(`${BASE_URL}/search?q=${keyword}`);
-    const data = await handleResponse(response);
-    return data;
+
+  search(keyword) {
+    return fetch(`${BASE_URL}/search?q=${keyword}`).then(handleResponse);
   },
-  async addReview({ id, name, review }) {
+  addReview({ id, name, review }) {
     const requestOptions = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'X-Auth-Token': API_KEY,
+        "Content-Type": "application/json",
+        "X-Auth-Token": API_KEY,
       },
-      body: JSON.stringify({
-        id, name, review,
-      }),
+      body: JSON.stringify(id, name, review),
     };
-    const response = await fetch(`${BASE_URL}/review`, requestOptions);
-    const data = await handleResponse(response);
-    return data;
+
+    return fetch(`${BASE_URL}/review`, requestOptions).then(handleResponse);
   },
 };
 

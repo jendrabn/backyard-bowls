@@ -1,9 +1,9 @@
-import favoriteRestaurantService from '../../services/favorite-restaurant-idb.service';
-import { renderLoading, renderError } from '../../utils/helpers';
+import favoriteRestaurantService from "../../services/favorite-restaurant-idb.service";
+import { renderLoading, renderError } from "../../utils/helpers";
 
 const Favorite = {
   async render() {
-    document.title = 'My Favorite — Backyard Bowls';
+    document.title = "My Favorite — Backyard Bowls";
     return `
       <div class="container">
         <div class="content" style="margin-top: 20px;">
@@ -17,21 +17,22 @@ const Favorite = {
       </div>`;
   },
   async afterRender() {
-    const container = document.getElementById('mainContent');
+    const container = document.getElementById("mainContent");
     renderLoading(container);
 
     try {
-      const restaurants = await favoriteRestaurantService.getAll();
+      const restaurants = await favoriteRestaurantService.list();
       if (restaurants && restaurants.length > 0) {
-        container.innerHTML = '<div class="card-list" id="restaurantList"></div>';
-        const restaurantContainer = document.getElementById('restaurantList');
+        container.innerHTML =
+          '<div class="card-list" id="restaurantList"></div>';
+        const restaurantContainer = document.getElementById("restaurantList");
         restaurants.forEach((restaurant) => {
-          const card = document.createElement('restaurant-item');
+          const card = document.createElement("restaurant-item");
           card.restaurant = restaurant;
           restaurantContainer.appendChild(card);
         });
       } else {
-        throw Error('Belum ada data restoran favorit');
+        throw Error("Belum ada data restoran favorit");
       }
     } catch (error) {
       renderError(container, error.message || error);
