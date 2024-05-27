@@ -33,7 +33,7 @@ const restaurantService = {
         "Content-Type": "application/json",
         "X-Auth-Token": API_KEY,
       },
-      body: JSON.stringify(id, name, review),
+      body: JSON.stringify({ id, name, review }),
     };
 
     return fetch(`${BASE_URL}/review`, requestOptions).then(handleResponse);
