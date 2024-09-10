@@ -42,13 +42,13 @@
 
 // NAVBAR
 .header {
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid #e2e8f0;
 
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .75rem 0;
+    padding: 0.75rem 0;
 
     .nav-logo {
       font-size: 2rem;
@@ -86,7 +86,6 @@
           &:hover,
           &.active {
             color: $pink;
-
           }
         }
       }
@@ -125,7 +124,7 @@
   @mixin hero-text {
     color: $white;
     text-align: center;
-    text-shadow: 1px 1px 5px rgba($color: $black, $alpha: .35);
+    text-shadow: 1px 1px 5px rgba($color: $black, $alpha: 0.35);
   }
 
   img {
@@ -138,7 +137,6 @@
     z-index: 1;
   }
 
-
   .inner-hero {
     z-index: 2;
     position: absolute;
@@ -146,7 +144,7 @@
     height: 100%;
     top: 0;
     padding: 0 10%;
-    background-color: rgba($color: $black, $alpha: .55);
+    background-color: rgba($color: $black, $alpha: 0.55);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,10 +158,9 @@
 
     p {
       @include hero-text;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       margin-bottom: 0;
     }
-
   }
 }
 
@@ -175,14 +172,14 @@
   flex-direction: column;
   margin-top: 40px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba($color: $black, $alpha: .25);
+  border-bottom: 1px solid rgba($color: $black, $alpha: 0.25);
 
   .search-bar {
     width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
-    border: 1px solid rgba($color: $black, $alpha: .25);
+    border: 1px solid rgba($color: $black, $alpha: 0.25);
     border-radius: 25px;
     margin-top: 15px;
 
@@ -257,13 +254,13 @@
 // FOOTER
 .footer {
   margin-top: auto;
-  background-color: #393E46;
+  background-color: #393e46;
 
   .inner-footer {
     text-align: center;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     color: $white;
-    font-size: .65em;
+    font-size: 0.65em;
     font-weight: 300;
 
     &,
@@ -288,7 +285,6 @@
   position: relative;
   display: inline-block;
 
-
   .stars-inner {
     position: absolute;
     top: 0;
@@ -297,14 +293,12 @@
     overflow: hidden;
     width: 0;
 
-
     &::before {
       content: "\f005 \f005 \f005 \f005 \f005";
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
       color: $yellow;
     }
-
   }
 
   &::before {
@@ -313,11 +307,9 @@
     font-weight: 900;
     color: rgb(219, 219, 219);
   }
-
 }
 
 // END STARS RATING
-
 
 // CARD
 .card-list {
@@ -339,11 +331,11 @@
     right: 0;
     position: absolute;
     padding: 5px 10px;
-    font-size: .825rem;
+    font-size: 0.825rem;
     background-color: $white;
     border-bottom-left-radius: 10px;
     background-color: $white;
-    letter-spacing: .85px;
+    letter-spacing: 0.85px;
     color: $gray-700;
 
     span {
@@ -351,7 +343,7 @@
 
       i {
         color: #fa1e0e;
-        font-size: .9rem;
+        font-size: 0.9rem;
       }
     }
   }
@@ -360,7 +352,7 @@
     overflow: hidden;
     height: 180px;
     border-radius: 10px;
-    background-color: #EFEFEF;
+    background-color: #efefef;
     margin-bottom: 0;
 
     img {
@@ -391,7 +383,7 @@
 
     .description {
       color: $gray-800;
-      font-size: .9rem;
+      font-size: 0.9rem;
       word-wrap: break-word;
       overflow: hidden;
       display: -webkit-box;
@@ -417,7 +409,7 @@
           }
 
           .fas.fa-heart {
-            color: #CC0000;
+            color: #cc0000;
           }
         }
       }
@@ -431,7 +423,6 @@
   }
 
   p {
-
     i {
       color: $red;
       padding-right: 10px;
@@ -448,7 +439,7 @@
 
     figure {
       width: 100%;
-      background-color: #EFEFEF;
+      background-color: #efefef;
 
       img {
         width: 100%;
@@ -465,14 +456,12 @@
       word-wrap: break-word;
       margin-top: 15px;
       margin-bottom: 0;
-      font-size: .95rem;
+      font-size: 0.95rem;
     }
 
     .rating {
-
       .stars-outer {
         .stars-inner {
-
           &::before {
             font-size: 1.25rem;
           }
@@ -495,17 +484,17 @@
 
     .btn-favorite {
       &.un {
-        @include button(#ECECEC, $gray-700, $gray-700);
+        @include button(#ececec, $gray-700, $gray-700);
       }
 
       &.add {
-        @include button(#CC0000, $white, #CC0000);
+        @include button(#cc0000, $white, #cc0000);
       }
 
       width: 100%;
       border-radius: 0 !important;
       text-transform: uppercase;
-      font-size: .85rem !important;
+      font-size: 0.85rem !important;
       font-weight: 700 !important;
     }
 
@@ -516,7 +505,7 @@
       span:nth-child(1) {
         margin-right: 15px;
         font-weight: 600;
-        font-size: .9rem;
+        font-size: 0.9rem;
       }
 
       .name {
@@ -525,7 +514,7 @@
         display: inline-block;
         background-color: #f6dfeb;
         padding: 5px 10px;
-        font-size: .875rem;
+        font-size: 0.875rem;
       }
     }
   }
@@ -553,7 +542,7 @@
       letter-spacing: 1px;
       font-weight: 500;
       position: relative;
-      font-size: .9rem;
+      font-size: 0.9rem;
       flex: 1;
 
       &:hover {
@@ -565,7 +554,7 @@
 
         &::after {
           position: absolute;
-          content: '';
+          content: "";
           width: 100%;
           bottom: 0;
           left: 0;
@@ -574,14 +563,13 @@
           display: block;
         }
       }
-
     }
   }
 
   .tab-content {
     display: none;
-    animation: fadeEffect .5s linear;
-    background-color: #F9F9F9;
+    animation: fadeEffect 0.5s linear;
+    background-color: #f9f9f9;
   }
 
   @keyframes fadeEffect {
@@ -631,7 +619,7 @@
   text-transform: capitalize;
   border-radius: 0;
   padding: 0 7px;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .review-list {
@@ -674,7 +662,7 @@
       width: auto;
 
       div:nth-child(1) {
-        font-size: .875rem;
+        font-size: 0.875rem;
         font-weight: 600;
         display: flex;
         justify-content: flex-start;
@@ -684,16 +672,15 @@
           margin-left: 7px;
           font-weight: 300;
           color: $gray-700;
-          font-size: .8rem;
+          font-size: 0.8rem;
         }
       }
 
       div:nth-child(2) {
         margin-top: 5px;
         color: $gray-800;
-        font-size: .875rem;
+        font-size: 0.875rem;
         word-wrap: break-word;
-
       }
     }
   }
@@ -726,7 +713,7 @@
 
     .modal-header {
       padding: 10px 15px;
-      background-color: rgba($color: $black, $alpha: .025);
+      background-color: rgba($color: $black, $alpha: 0.025);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -746,7 +733,6 @@
         align-items: center;
         background: none;
         border: none;
-
       }
     }
 
@@ -756,32 +742,31 @@
 
     .modal-footer {
       padding: 10px 15px;
-      background-color: rgba($color: $black, $alpha: .025);
-    }
-
-  }
-
-  @keyframes animatetop {
-    from {
-      top: -300px;
-      opacity: 0
-    }
-
-    to {
-      top: 0;
-      opacity: 1
+      background-color: rgba($color: $black, $alpha: 0.025);
     }
   }
 
   @keyframes animatetop {
     from {
       top: -300px;
-      opacity: 0
+      opacity: 0;
     }
 
     to {
       top: 0;
-      opacity: 1
+      opacity: 1;
+    }
+  }
+
+  @keyframes animatetop {
+    from {
+      top: -300px;
+      opacity: 0;
+    }
+
+    to {
+      top: 0;
+      opacity: 1;
     }
   }
 }
@@ -802,10 +787,8 @@
   resize: none;
   border-radius: 5px;
   outline: none;
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   border: 1px solid rgb(204, 204, 204);
-
 
   &:focus {
     @include focus-shadow;
@@ -817,7 +800,6 @@
   padding: 0 1rem;
   border-radius: 0;
 }
-
 
 // LOADING
 .lds-ring {

@@ -4,7 +4,15 @@ import CONFIG from '../../config';
 
 const createRestaurantDetail = (restaurant) => {
   const {
-    name, city, address, pictureId, customerReviews, menus, rating, description, categories,
+    name,
+    city,
+    address,
+    pictureId,
+    customerReviews,
+    menus,
+    rating,
+    description,
+    categories,
   } = restaurant;
   const { foods, drinks } = menus;
 

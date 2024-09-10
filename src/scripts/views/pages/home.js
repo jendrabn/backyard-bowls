@@ -1,17 +1,18 @@
-import restaurantService from "../../services/restaurant.service";
-import { renderLoading, renderError } from "../../utils/helpers";
+import RestaurantService from '../../services/restaurant.service';
+import debounce from '../../utils/debounce';
+import { renderLoading, renderError } from '../../utils/helpers';
 
 const Home = {
   async render() {
-    document.title = "Home — Backyard Bowls";
+    document.title = 'Home — Backyard Bowls';
     return `
       <hero-component></hero-component>
       <div class="container">
           <div class="search ">
-              <div><button aria-label="show-restaurants" role="button" class="btn-search" type="button">Show all restaurants</button></div>
+              <div><button aria-label="show-restaurants" role="button" id="btnShowAll" class="btn-search" type="button">Show all restaurants</button></div>
               <div class="search-bar">
                   <span><i class="fas fa-search"></i></span>
-                  <input type="text" class="search-input" placeholder="Search restaurants" aria-label="search-restaurant">
+                  <input type="text" class="search-input" id="inputSearch" placeholder="Search Restaurant" aria-label="search-restaurant">
               </div>
           </div>
           <div class="content" style="margin-top: 20px;">
@@ -23,53 +24,55 @@ const Home = {
               <div class="content-body" id="mainContent">
               </div>
           </div>
-      </div>
-    `;
+      </div>`;
   },
   async afterRender() {
+    const inputSearch = document.getElementById('inputSearch');
+    const btnShowAll = document.getElementById('btnShowAll');
+
     await this._renderContent();
-    const searchInput = document.querySelector(".search-input");
 
-    document
-      .querySelector(".btn-search")
-      .addEventListener("click", async () => {
-        searchInput.value = "";
-        await this._renderContent();
-      });
+    btnShowAll.addEventListener(
+      'click',
+      debounce(() => {
+        inputSearch.value = '';
+        this._renderContent();
+      }, 300),
+    );
 
-    searchInput.addEventListener("input", (event) => {
-      setTimeout(async () => {
-        const { value } = event.target;
-        await this._renderContent(value);
-      }, 500);
-    });
+    inputSearch.addEventListener(
+      'input',
+      debounce((event) => this._renderContent(event.target.value), 300),
+    );
   },
-  async _renderContent(keyword = "") {
-    const container = document.getElementById("mainContent");
-    renderLoading(container);
+  async _renderContent(searchKeyword = '') {
+    const mainContentElement = document.getElementById('mainContent');
     try {
-      if (keyword && keyword.length > 0) {
-        const { restaurants } = await restaurantService.search(keyword);
-        this._renderRestaurants(container, restaurants);
-      } else {
-        const { restaurants } = await restaurantService.list();
-        this._renderRestaurants(container, restaurants);
-      }
+      renderLoading(mainContentElement);
+
+      const { restaurants } = searchKeyword
+        ? await RestaurantService.search(searchKeyword)
+        : await RestaurantService.list();
+
+      this._renderRestaurants(mainContentElement, restaurants);
     } catch (error) {
-      renderError(container, error.message || error);
+      renderError(mainContentElement, error.message || error);
     }
   },
   _renderRestaurants(container, restaurants) {
-    if (restaurants && restaurants.length > 0) {
+    if (restaurants.length > 0) {
       container.innerHTML = '<div class="card-list" id="restaurantList"></div>';
-      const restaurantContainer = document.getElementById("restaurantList");
+      const restaurantListElement = document.getElementById('restaurantList');
+
+      restaurantListElement.innerHTML = '';
+
       restaurants.forEach((restaurant) => {
-        const card = document.createElement("restaurant-item");
-        card.restaurant = restaurant;
-        restaurantContainer.appendChild(card);
+        const restaurantCard = document.createElement('restaurant-item');
+        restaurantCard.restaurant = restaurant;
+        restaurantListElement.appendChild(restaurantCard);
       });
     } else {
-      throw Error("Data restoran tidak ditemukan");
+      renderError(container, 'No restaurants found');
     }
   },
 };

@@ -1,13 +1,17 @@
 import 'regenerator-runtime';
 import { precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { CacheFirst, StaleWhileRevalidate, NetworkFirst } from 'workbox-strategies';
+import {
+  CacheFirst,
+  StaleWhileRevalidate,
+  NetworkFirst,
+} from 'workbox-strategies';
 import { ExpirationPlugin } from 'workbox-expiration';
-import { skipWaiting, clientsClaim, setCacheNameDetails } from 'workbox-core';
+import { clientsClaim, setCacheNameDetails } from 'workbox-core';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 import CONFIG from './config';
 
-skipWaiting();
+self.skipWaiting();
 clientsClaim();
 
 setCacheNameDetails(CONFIG.CACHE_NAME);

@@ -1,3 +1,4 @@
+import toastr from 'toastr';
 import DrawerInitiator from '../utils/drawer-initiator';
 import ScrollTopInitiator from '../utils/scroll-top-initiator';
 import UrlParser from '../routes/url-parser';
@@ -8,7 +9,6 @@ import './components/navbar-component';
 import './components/footer-component';
 import './components/hero-component';
 import './components/restaurant-item';
-import './components/toast-component';
 
 export default class App {
   constructor({ button, drawer, content }) {
@@ -24,7 +24,26 @@ export default class App {
       drawer: this._drawer,
       content: this._content,
     });
+
     ScrollTopInitiator.init(document.querySelector('.scroll-top'));
+
+    toastr.options = {
+      closeButton: true,
+      debug: false,
+      newestOnTop: false,
+      progressBar: true,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      onclick: null,
+      showDuration: 300,
+      hideDuration: 1000,
+      timeOut: 5000,
+      extendedTimeOut: 1000,
+      showEasing: 'swing',
+      hideEasing: 'linear',
+      showMethod: 'fadeIn',
+      hideMethod: 'fadeOut',
+    };
   }
 
   async renderPage() {

@@ -1,14 +1,7 @@
 const renderLoading = (container) => {
   container.innerHTML = `
     <div class="no-content">
-       <div class="loading">
-        <div class="lds-ring">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
+      <p>Loading...</p> 
     </div>
   `;
 };
@@ -16,9 +9,7 @@ const renderLoading = (container) => {
 const renderError = (container, message) => {
   container.innerHTML = `
     <div class="no-content">
-      <div class="has-error">
-        <p>${message}</p>
-      </div>
+       <p>${message}</p>
     </div>
   `;
 };

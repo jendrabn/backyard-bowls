@@ -1,44 +1,41 @@
-import favoriteRestaurantService from "../../services/favorite-restaurant-idb.service";
-import { renderLoading, renderError } from "../../utils/helpers";
+import FavoriteRestaurantService from '../../services/favorite-restaurant-idb.service';
+import { renderLoading, renderError } from '../../utils/helpers';
 
 const Favorite = {
   async render() {
-    document.title = "My Favorite — Backyard Bowls";
+    document.title = 'My Favorite — Backyard Bowls';
     return `
       <div class="container">
-        <div class="content" style="margin-top: 20px;">
+          <div class="content" style="margin-top: 20px;">
           <div class="content-header">
-            <h2>Restoran Favorit Anda</h2>
-            <p>Jelajahi daftar terpilih untuk restoran, kafe, dan bar terbaik di dan di sekitar Anda, berdasarkan tren</p>
+              <h2>Restoran Favorit Anda</h2>
+              <p>Jelajahi daftar terpilih untuk restoran, kafe, dan bar terbaik di dan di sekitar Anda, berdasarkan tren</p>
           </div>
           <div class="content-body" id="mainContent">
           </div>
-        </div>
+          </div>
       </div>`;
   },
   async afterRender() {
-    const container = document.getElementById("mainContent");
-    renderLoading(container);
+    const mainContent = document.getElementById('mainContent');
 
     try {
-      const restaurants = await favoriteRestaurantService.list();
+      renderLoading(mainContent);
+      const favoriteRestaurants = await FavoriteRestaurantService.list();
 
-      console.log(restaurants);
-      if (restaurants && restaurants.length > 0) {
-        container.innerHTML =
-          '<div class="card-list" id="restaurantList"></div>';
-        const restaurantContainer = document.getElementById("restaurantList");
-        restaurants.forEach((restaurant) => {
-          const card = document.createElement("restaurant-item");
-          card.restaurant = restaurant;
-          restaurantContainer.appendChild(card);
+      if (favoriteRestaurants.length > 0) {
+        mainContent.innerHTML = '<div class="card-list" id="restaurantList"></div>';
+        const restaurantList = document.getElementById('restaurantList');
+        favoriteRestaurants.forEach((restaurant) => {
+          const restaurantCard = document.createElement('restaurant-item');
+          restaurantCard.restaurant = restaurant;
+          restaurantList.appendChild(restaurantCard);
         });
       } else {
-        throw Error("Belum ada data restoran favorit");
+        renderError(mainContent, 'No favorite restaurants found');
       }
     } catch (error) {
-      console.log(error);
-      renderError(container, error.message || error);
+      renderError(mainContent, error.message);
     }
   },
 };
