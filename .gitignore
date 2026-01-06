@@ -2,3 +2,6 @@ node_modules/
 dist/
 build/
 e2e/outputs/
+.vercel
+.cache
+*.log
