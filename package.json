@@ -15,7 +15,7 @@
   "author": "Jendra Bayu Nugraha <jendra455@gmail.com>",
   "license": "ISC",
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   },
   "dependencies": {
     "idb": "^8.0.0",
