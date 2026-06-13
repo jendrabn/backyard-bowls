@@ -16,7 +16,7 @@ const FavoriteButtonInitiator = {
   },
 
   _renderButtonContent(isFavorite) {
-    this._buttonContainer.innerHTML = createFavoriteButton(isFavorite);
+    this._buttonContainer.innerHTML = createFavoriteButton(!isFavorite);
     const btn = this._buttonContainer.querySelector('.btn-favorite');
 
     btn.addEventListener('click', async () => {

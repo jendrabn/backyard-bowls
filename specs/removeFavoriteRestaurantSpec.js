@@ -1,51 +1,52 @@
-import { createFavoriteButtonWithRestaurant } from "./helpers/testFactories";
-import favoriteRestaurantService from "../src/scripts/services/favorite-restaurant-idb.service";
+import {
+  createFavoriteButtonContainer,
+  createFavoriteButtonWithRestaurant,
+} from './helpers/testFactories';
+import FavoriteRestaurantService from '../src/scripts/services/favorite-restaurant-idb.service';
 
-describe("Remove favorite restaurant from IndexedDB", () => {
-  const addFavoriteButtonContainer = () => {
-    document.body.innerHTML = `
-    <div class="btn-favorite-wrapper"></div>
-    <div class="toast-container bottom-left"></div>
-    `;
-  };
-
+describe('Remove favorite restaurant from IndexedDB', () => {
   beforeEach(async () => {
-    addFavoriteButtonContainer();
-    await favoriteRestaurantService.put({ id: 1 });
+    createFavoriteButtonContainer();
+    await FavoriteRestaurantService.put({ id: 1 });
   });
 
   afterEach(async () => {
-    await favoriteRestaurantService.delete(1);
+    const restaurants = await FavoriteRestaurantService.list();
+    await Promise.all(restaurants.map((r) => FavoriteRestaurantService.delete(r.id)));
   });
 
-  it("should display unfavorite button when the restaurant has been favorited", async () => {
+  it('should display unfavorite button when the restaurant has been favorited', async () => {
     await createFavoriteButtonWithRestaurant({ id: 1 });
+
     expect(
-      document.querySelector('button.un[aria-label="remove from favorites"]')
+      document.querySelector('button.un[aria-label="remove from favorites"]'),
     ).toBeTruthy();
   });
 
-  it("should not display favorite button when the restaurant has been favorited", async () => {
+  it('should not display favorite button when the restaurant has been favorited', async () => {
     await createFavoriteButtonWithRestaurant({ id: 1 });
+
     expect(
-      document.querySelector('button.add[aria-label="add to favorites"]')
+      document.querySelector('button.add[aria-label="add to favorites"]'),
     ).toBeFalsy();
   });
 
-  it("should be able to remove favorited restaurant from the list", async () => {
+  it('should be able to remove favorited restaurant from the list', async () => {
     await createFavoriteButtonWithRestaurant({ id: 1 });
-    document
-      .querySelector("button.btn-favorite")
-      .dispatchEvent(new Event("click"));
-    expect(await favoriteRestaurantService.list()).toEqual([]);
+
+    document.querySelector('button.btn-favorite').dispatchEvent(new Event('click'));
+
+    const list = await FavoriteRestaurantService.list();
+    expect(list).toEqual([]);
   });
 
-  it("should not throw error if the unfavorite restaurant is not in the list", async () => {
+  it('should not throw error if the unfavorited restaurant is not in the list', async () => {
     await createFavoriteButtonWithRestaurant({ id: 1 });
-    await favoriteRestaurantService.delete(1);
-    document
-      .querySelector("button.btn-favorite")
-      .dispatchEvent(new Event("click"));
-    expect(await favoriteRestaurantService.list()).toEqual([]);
+    await FavoriteRestaurantService.delete(1);
+
+    document.querySelector('button.btn-favorite').dispatchEvent(new Event('click'));
+
+    const list = await FavoriteRestaurantService.list();
+    expect(list).toEqual([]);
   });
 });
