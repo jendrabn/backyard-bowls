@@ -1,5 +1,4 @@
-/* eslint-disable linebreak-style */
-import 'regenerator-runtime'; /* for async await transpile */
+import 'regenerator-runtime';
 import '../scss/style.scss';
 import App from './views/app';
 import swRegister from './utils/sw-register';
@@ -14,7 +13,16 @@ const app = new App({
   content: document.querySelector('#app'),
 });
 
-window.addEventListener('hashchange', () => {
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a');
+  if (link && link.origin === window.location.origin) {
+    event.preventDefault();
+    window.history.pushState({}, '', link.pathname);
+    app.renderPage();
+  }
+});
+
+window.addEventListener('popstate', () => {
   app.renderPage();
 });
 

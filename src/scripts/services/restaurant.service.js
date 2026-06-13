@@ -1,18 +1,14 @@
-import toastr from 'toastr';
 import CONFIG from '../config';
 
 const { BASE_URL, API_KEY } = CONFIG;
 
-const handleResponse = (response) => response.json().then((data) => {
+async function handleResponse(response) {
+  const data = await response.json();
   if (!response.ok) {
-    const error = (data && data.message) || response.statusText;
-
-    toastr.error(error);
-
-    return Promise.reject(error);
+    throw new Error((data && data.message) || response.statusText);
   }
   return data;
-});
+}
 
 class RestaurantService {
   static list() {
@@ -28,16 +24,14 @@ class RestaurantService {
   }
 
   static addReview({ id, name, review }) {
-    const requestOptions = {
+    return fetch(`${BASE_URL}/review`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-Auth-Token': API_KEY,
       },
       body: JSON.stringify({ id, name, review }),
-    };
-
-    return fetch(`${BASE_URL}/review`, requestOptions).then(handleResponse);
+    }).then(handleResponse);
   }
 }
 

@@ -17,7 +17,7 @@ class RestaurantCardComponent extends HTMLElement {
             <div class="city"><span><i class="fas fa-map-marker-alt"></i></span> ${city}</div>
             <figure><img class="lazyload" data-src="${CONFIG.BASE_IMAGE_URL}/small/${pictureId}" alt="${name} - ${city}" width="400" height="250"></figure>
             <div class="meta-wrapper">
-                <a class="name" href="${`/#/detail/${id}`}">${name}</a>
+                <a class="name" href="/detail/${id}">${name}</a>
                 <div class="description">
                     ${description}
                 </div>

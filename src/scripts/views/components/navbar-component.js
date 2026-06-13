@@ -17,10 +17,10 @@ class NavbarComponent extends HTMLElement {
               </button>
               <ul class="nav-menu">
                   <li class="nav-item">
-                      <a href="/#/home" class="nav-link">Home</a>
+                      <a href="/home" class="nav-link">Home</a>
                   </li>
                   <li class="nav-item">
-                      <a href="/#/favorite" class="nav-link">Favorite</a>
+                      <a href="/favorite" class="nav-link">Favorite</a>
                   </li>
                   <li class="nav-item">
                       <a href="https://github.com/jendrabn" class="nav-link" target="_blank" rel="noreferrer">About

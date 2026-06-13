@@ -10,11 +10,11 @@ const WebSocketInitiator = {
     }
   },
 
-  _onMessageHandler(message, title = 'Notification from websocket') {
+  _onMessageHandler(event) {
     NotificationHelper.sendNotification({
-      title,
+      title: 'Notification from websocket',
       options: {
-        body: message,
+        body: event.data,
         icon: 'icons/icon-192x192.png',
         vibrate: [200, 100, 200],
       },

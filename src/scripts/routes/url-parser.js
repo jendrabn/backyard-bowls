@@ -1,11 +1,11 @@
 const UrlParser = {
   parseActiveUrlWithCombiner() {
-    const url = window.location.hash.slice(1).toLocaleLowerCase();
+    const url = window.location.pathname;
     const splitedUrl = this._urlSplitter(url);
     return this._urlCombiner(splitedUrl);
   },
   parseActiveUrlWithoutCombiner() {
-    const url = window.location.hash.slice(1).toLocaleLowerCase();
+    const url = window.location.pathname;
     return this._urlSplitter(url);
   },
   _urlSplitter(url) {
