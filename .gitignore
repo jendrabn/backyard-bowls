@@ -5,3 +5,5 @@ e2e/outputs/
 .vercel
 .cache
 *.log
+.agents/
+skills-lock.json

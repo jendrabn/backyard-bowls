@@ -11,7 +11,7 @@ class HeroComponent extends HTMLElement {
               <source type="image/webp" srcset="./images/hero-large.webp" media="(min-width: 601px)">
               <img class="lazyload" src="./images/hero-placeholder.jpg" width="500" height="250"
                   srcset="./images/hero-small.jpg 480w, ./images/hero-large.jpg 800w" sizes="(max-width: 600px) 480px, 800px"
-                  alt="Hero">
+                  alt="Backyard Bowls - Temukan makanan & minuman terbaik di sekitar Anda">
           </picture>
           <div class="inner-hero">
               <h1>Backyard Bowls</h1>

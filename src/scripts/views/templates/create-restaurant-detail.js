@@ -25,7 +25,7 @@ const createRestaurantDetail = (restaurant) => {
       <div class="detail-wrapper">
         <div class="side-left">
           <figure>
-            <img class="lazyload" width="400" height="400" data-src="${CONFIG.BASE_IMAGE_URL}/medium/${pictureId}" alt="${name}">
+            <img class="lazyload" width="400" height="400" data-src="${CONFIG.BASE_IMAGE_URL}/medium/${pictureId}" alt="${name} - ${city}, ${address}">
           </figure>
         </div>
         <div class="side-right">

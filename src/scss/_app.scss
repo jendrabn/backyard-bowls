@@ -1,3 +1,6 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
 .skip-link {
   position: absolute;
   top: -40px;

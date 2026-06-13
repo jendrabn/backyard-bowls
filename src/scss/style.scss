@@ -1,25 +1,8 @@
-$white: #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black: #000 !default;
-$blue: #0d6efd !default;
-$indigo: #6610f2 !default;
-$purple: #6f42c1 !default;
-$pink: #E80967 !default;
-$red: #fa1e0e !default;
-$orange: #fd7e14 !default;
-$yellow: #ffc107 !default;
-$green: #198754 !default;
-$teal: #20c997 !default;
-$cyan: #0dcaf0 !default;
-
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'app';
+@use 'toast';
+@use 'responsive';
 
 *,
 *::before,
@@ -50,19 +33,16 @@ body {
   height: 100%;
 }
 
-
 p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-
 
 address {
   margin-bottom: 1rem;
   font-style: normal;
   line-height: inherit;
 }
-
 
 ol,
 ul {
@@ -83,7 +63,6 @@ ul ol {
   margin-bottom: 0;
 }
 
-
 figure {
   margin: 0 0 1rem;
 }
@@ -102,37 +81,3 @@ label {
   max-width: 1320px;
   margin: auto;
 }
-
-@mixin focus-shadow($color: $pink, $alpha: 0.4) {
-  box-shadow: 0 0 0 4px rgba($color: $color, $alpha: 0.4);
-  border-color: $pink;
-}
-
-@mixin button($background : $pink, $color: $white, $border-color: $pink) {
-  min-width: 44px;
-  min-height: 44px;
-  background-color: $background;
-  color: $color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  display: inline-block;
-
-  &:focus {
-    @include focus-shadow($border-color, .5);
-  }
-
-  &:hover {
-    background-color: rgba($color: $background, $alpha: .85);
-  }
-}
-
-@import 'app';
-@import 'toast';
-@import 'responsive';

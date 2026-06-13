@@ -2,8 +2,9 @@
     "version": 2,
     "public": true,
     "name": "backyard-bowls",
-    "buildCommand": "npm run build",
+    "buildCommand": "bun run build",
     "outputDirectory": "dist",
+    "installCommand": "bun install",
     "rewrites": [
         {
             "source": "/(.*)",

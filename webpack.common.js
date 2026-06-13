@@ -10,16 +10,14 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
+    clean: true,
+    publicPath: "/",
   },
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: "asset/resource",
       },
       {
         test: /\.css$/,
@@ -53,6 +51,7 @@ module.exports = {
     }),
     new InjectManifest({
       swSrc: path.resolve(__dirname, "src/scripts/sw.js"),
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
     }),
     new ImageminWebpWebpackPlugin({
       config: [
