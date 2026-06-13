@@ -1,5 +1,5 @@
 import FavoriteRestaurantService from '../../services/favorite-restaurant-idb.service';
-import { renderLoading, renderError } from '../../utils/helpers';
+import { showLoading, renderError } from '../../utils/helpers';
 
 const Favorite = {
   async render() {
@@ -20,8 +20,7 @@ const Favorite = {
     const mainContent = document.getElementById('mainContent');
 
     try {
-      renderLoading(mainContent);
-      const favoriteRestaurants = await FavoriteRestaurantService.list();
+      const favoriteRestaurants = await showLoading(mainContent, () => FavoriteRestaurantService.list());
 
       if (favoriteRestaurants.length > 0) {
         mainContent.innerHTML = '<div class="restaurant-grid" id="restaurantList"></div>';

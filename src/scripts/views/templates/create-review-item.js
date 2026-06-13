@@ -2,7 +2,7 @@ const createReviewItem = ({ name, date, review }) => `
      <li>
         <div class="review-avatar">
           <figure>
-            <img src="images/avatar-default.webp" alt="${name}">
+            <img src="/images/avatar-default.webp" alt="${name}">
           </figure>
         </div>
         <div class="review-body">

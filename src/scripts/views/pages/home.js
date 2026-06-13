@@ -1,6 +1,6 @@
 import RestaurantService from '../../services/restaurant.service';
 import debounce from '../../utils/debounce';
-import { renderLoading, renderError } from '../../utils/helpers';
+import { showLoading, fadeInContent, renderError } from '../../utils/helpers';
 
 const Home = {
   async render() {
@@ -48,11 +48,11 @@ const Home = {
   async _renderContent(searchKeyword = '') {
     const mainContentElement = document.getElementById('mainContent');
     try {
-      renderLoading(mainContentElement);
-
-      const { restaurants } = searchKeyword
-        ? await RestaurantService.search(searchKeyword)
-        : await RestaurantService.list();
+      const { restaurants } = await showLoading(mainContentElement, async () => (
+        searchKeyword
+          ? await RestaurantService.search(searchKeyword)
+          : await RestaurantService.list()
+      ));
 
       this._renderRestaurants(mainContentElement, restaurants);
     } catch (error) {
