@@ -5,7 +5,7 @@
 
   // FOOTER
   .footer {
-    .inner-footer {
+    .footer-inner {
       font-size: .875em;
     }
   }
@@ -16,7 +16,7 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
 
-  .card-list {
+  .restaurant-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -29,7 +29,7 @@
       height: 450px;
     }
 
-    .inner-hero {
+    .hero-overlay {
 
       h1 {
         font-size: 4rem;
@@ -46,9 +46,9 @@
   // END HERO
 
   // TAB
-  .tab-wrapper {
-    .tab {
-      .tab-link {
+  .tabs {
+    .tabs-nav {
+      .tabs-trigger {
         font-size: 1rem
       }
     }
@@ -64,7 +64,7 @@
 
   // END LIST
 
-  .show-modal-review {
+  .review-trigger {
     padding: 0 25px;
   }
 
@@ -94,22 +94,22 @@
 
   // END MODAL
 
-  .card-list {
+  .restaurant-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
 
   // SEARCH
-  .search {
+  .search-section {
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
 
-    .search-bar {
+    .search-field {
       width: 50%;
     }
 
-    .btn-search {
+    .search-btn {
       border-radius: 5px;
     }
 
@@ -118,9 +118,8 @@
   // END SEARCH
 
   // CONTENT
-  .content {
-
-    .content-header {
+  .page-content {
+    .page-heading {
       h2 {
         font-size: 2.5rem;
       }
@@ -129,39 +128,38 @@
         font-size: 1.15rem;
       }
     }
+  }
 
-    .detail-header {
-      h2 {
-        font-size: 2.4rem;
-
-      }
-
-      p {
-        font-size: 1.125rem;
-
-        i {
-          color: $red;
-        }
-      }
+  .detail-header {
+    h2 {
+      font-size: 2.4rem;
     }
 
+    p {
+      font-size: 1.125rem;
+
+      i {
+        color: $color-danger;
+      }
+    }
+  }
+
+  .detail-main {
     .detail-wrapper {
       flex-direction: row;
+      flex-wrap: nowrap;
 
-      .side-left {
-        flex: 50%;
+      .detail-media {
+        flex: 1;
       }
 
-      .side-right {
-        flex: 50%;
+      .detail-content {
+        flex: 1;
         padding-left: 25px;
-
 
         .btn-favorite {
           width: 50%;
         }
-
-
       }
     }
   }
@@ -172,26 +170,17 @@
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .card-list {
+  .restaurant-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 
 }
 
-// XX-Large devices (larger desktops, 1400px and up)
-@media (min-width: 1400px) {}
-
-// X-Small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) {}
-
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) {}
-
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) {
 
   // NAVBAR
-  .header {
+  .site-header {
     .navbar {
       .nav-logo {
         font-size: 1.7rem;
@@ -219,25 +208,25 @@
           width: 100%;
 
           .nav-link {
-            color: $white;
+            color: $color-white;
           }
         }
       }
 
 
-      .hamburger {
+      .nav-toggle {
         display: block;
 
         &.active {
-          .bar:nth-child(2) {
+          .nav-toggle__bar:nth-child(2) {
             opacity: 0;
           }
 
-          .bar:nth-child(1) {
+          .nav-toggle__bar:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
           }
 
-          .bar:nth-child(3) {
+          .nav-toggle__bar:nth-child(3) {
             transform: translateY(-8px) rotate(-45deg);
           }
         }
@@ -249,8 +238,3 @@
 
 }
 
-// Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) {}
-
-// X-Large devices (large desktops, less than 1400px)
-@media (max-width: 1399.98px) {}

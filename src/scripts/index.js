@@ -8,7 +8,7 @@ import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const app = new App({
-  button: document.querySelector('.hamburger'),
+  button: document.querySelector('.nav-toggle'),
   drawer: document.querySelector('.nav-menu'),
   content: document.querySelector('#app'),
 });

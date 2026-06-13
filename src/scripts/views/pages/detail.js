@@ -14,13 +14,13 @@ const Detail = {
     document.title = 'Detail — Backyard Bowls';
     return `
             <div class="container">
-            <div class="content" style="margin-top: 20px;">
+            <div class="page-content" style="margin-top: 20px;">
             </div>
             </div>
             ${createModalReview()}`;
   },
   async afterRender() {
-    const container = document.querySelector('.content');
+    const container = document.querySelector('.page-content');
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     renderLoading(container);
 
@@ -30,19 +30,19 @@ const Detail = {
       container.innerHTML = createRestaurantDetail(restaurant);
 
       await FavoriteButtonInitiator.init({
-        button: document.querySelector('.btn-favorite-wrapper'),
+        button: document.querySelector('.favorite-wrapper'),
         restaurant,
       });
 
       TabInitiator.init({
-        tabLink: document.querySelectorAll('.tab-link'),
-        tabContent: document.querySelectorAll('.tab-content'),
+        tabLink: document.querySelectorAll('.tabs-trigger'),
+        tabContent: document.querySelectorAll('.tabs-panel'),
         tabOpen: document.getElementById('defaultOpen'),
       });
 
       ModalInitiator.init({
-        openButton: document.querySelector('.show-modal-review'),
-        closeButton: document.querySelector('button.close-modal'),
+        openButton: document.querySelector('.review-trigger'),
+        closeButton: document.querySelector('.modal-close'),
         modal: document.getElementById('modal-review'),
         onClose: () => document.getElementById('form-review').reset(),
       });

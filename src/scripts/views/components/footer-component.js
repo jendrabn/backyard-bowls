@@ -6,7 +6,7 @@ class FooterComponent extends HTMLElement {
   _render() {
     this.innerHTML = `
             <footer>
-                <div class="inner-footer container">
+                <div class="footer-inner container">
                     Copyright © 2021 All Rights Reserved by <a href="/">Backyard Bowls</a>
                 </div>
             </footer>

@@ -1,13 +1,13 @@
 const createReviewItem = ({ name, date, review }) => `
      <li>
-        <div class="side-left">
+        <div class="review-avatar">
           <figure>
             <img src="images/avatar-default.webp" alt="${name}">
           </figure>
         </div>
-        <div class="side-right">
-          <div>${name} <span>${date}</span></div>
-          <div class="review-desc">${review}</div>
+        <div class="review-body">
+          <div class="review-author">${name} <span>${date}</span></div>
+          <div class="review-text">${review}</div>
         </div>
       </li>
   `;

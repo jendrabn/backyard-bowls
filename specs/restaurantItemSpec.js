@@ -31,7 +31,7 @@ describe('Restaurant item component', () => {
     const element = document.querySelector('restaurant-item');
     element.restaurant = sampleRestaurant;
 
-    const link = element.querySelector('a.name');
+    const link = element.querySelector('a.restaurant-card__name');
     expect(link).toBeTruthy();
     expect(link.getAttribute('href')).toBe('/detail/123');
   });
@@ -68,7 +68,7 @@ describe('Restaurant item component', () => {
     const element = document.querySelector('restaurant-item');
     element.restaurant = sampleRestaurant;
 
-    const cityBadge = element.querySelector('.city');
+    const cityBadge = element.querySelector('.restaurant-card__city');
     expect(cityBadge).toBeTruthy();
     expect(cityBadge.textContent).toContain('Jakarta');
   });

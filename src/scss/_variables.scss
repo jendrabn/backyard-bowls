@@ -1,21 +1,40 @@
-$white: #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black: #000 !default;
-$blue: #0d6efd !default;
-$indigo: #6610f2 !default;
-$purple: #6f42c1 !default;
-$pink: #E80967 !default;
-$red: #fa1e0e !default;
-$orange: #fd7e14 !default;
-$yellow: #ffc107 !default;
-$green: #198754 !default;
-$teal: #20c997 !default;
-$cyan: #0dcaf0 !default;
+$color-white: #fff;
+$color-black: #000;
+
+$color-gray-50: #f8f9fa;
+$color-gray-100: #f1f3f5;
+$color-gray-200: #e9ecef;
+$color-gray-300: #dee2e6;
+$color-gray-400: #ced4da;
+$color-gray-500: #adb5bd;
+$color-gray-600: #6c757d;
+$color-gray-700: #495057;
+$color-gray-800: #343a40;
+$color-gray-900: #212529;
+
+$color-primary: #E80967;
+$color-accent: #0d6efd;
+$color-danger: #fa1e0e;
+$color-success: #198754;
+$color-warning: #ffc107;
+
+$color-heart: #cc0000;
+$color-footer-bg: #393e46;
+$color-footer-text: #e6e6e6;
+
+$font-primary: 'Plus Jakarta Sans', sans-serif;
+
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-full: 25px;
+
+$shadow-sm: 0 1px 3px rgba($color-black, 0.08);
+$shadow-md: 0 4px 12px rgba($color-black, 0.1);
+$shadow-lg: 0 8px 24px rgba($color-black, 0.12);
+
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+
+$container-max: 1320px;
+$container-width: 90%;

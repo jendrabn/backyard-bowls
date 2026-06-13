@@ -5,15 +5,13 @@ class NavbarComponent extends HTMLElement {
 
   _render() {
     this.innerHTML = `
-      <header class="header">
+      <header class="site-header">
           <nav class="navbar container">
               <a href="/" class="nav-logo">Backyard<span>Bowls.</span></a>
-              <button class="hamburger" aria-label="navigation-menu">
-                  <div>
-                      <span class="bar"></span>
-                      <span class="bar"></span>
-                      <span class="bar"></span>
-                  </div>
+              <button class="nav-toggle" aria-label="navigation-menu">
+                  <span class="nav-toggle__bar"></span>
+                  <span class="nav-toggle__bar"></span>
+                  <span class="nav-toggle__bar"></span>
               </button>
               <ul class="nav-menu">
                   <li class="nav-item">

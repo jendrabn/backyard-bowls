@@ -1,31 +1,39 @@
 @use 'variables' as *;
 
-@mixin focus-shadow($color: $pink, $alpha: 0.4) {
-  box-shadow: 0 0 0 4px rgba($color: $color, $alpha: 0.4);
-  border-color: $pink;
+@mixin focus-ring($color: $color-primary) {
+  outline: 2px solid rgba($color, 0.5);
+  outline-offset: 2px;
 }
 
-@mixin button($background : $pink, $color: $white, $border-color: $pink) {
+@mixin button-base($bg: $color-primary, $text: $color-white) {
   min-width: 44px;
   min-height: 44px;
-  background-color: $background;
-  color: $color;
-  display: flex;
+  background-color: $bg;
+  color: $text;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
-  outline: none;
+  border-radius: $radius-sm;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  display: inline-block;
-
-  &:focus {
-    @include focus-shadow($border-color, .5);
-  }
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: $font-primary;
+  transition: background-color $transition-fast, transform $transition-fast;
 
   &:hover {
-    background-color: rgba($color: $background, $alpha: .85);
+    background-color: rgba($bg, 0.85);
+    transform: translateY(-1px);
   }
+
+  &:focus-visible {
+    @include focus-ring($bg);
+  }
+}
+
+@mixin truncate-text($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

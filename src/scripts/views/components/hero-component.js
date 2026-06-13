@@ -13,7 +13,7 @@ class HeroComponent extends HTMLElement {
                   srcset="./images/hero-small.jpg 480w, ./images/hero-large.jpg 800w" sizes="(max-width: 600px) 480px, 800px"
                   alt="Backyard Bowls - Temukan makanan & minuman terbaik di sekitar Anda">
           </picture>
-          <div class="inner-hero">
+          <div class="hero-overlay">
               <h1>Backyard Bowls</h1>
               <p>Temukan makanan & minuman terbaik di sekitar Anda</p>
           </div>

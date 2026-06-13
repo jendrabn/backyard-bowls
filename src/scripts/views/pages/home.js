@@ -8,20 +8,20 @@ const Home = {
     return `
       <hero-component></hero-component>
       <div class="container">
-          <div class="search ">
-              <div><button aria-label="show-restaurants" role="button" id="btnShowAll" class="btn-search" type="button">Show all restaurants</button></div>
-              <div class="search-bar">
-                  <span><i class="fas fa-search"></i></span>
+          <div class="search-section">
+              <div><button aria-label="show-restaurants" role="button" id="btnShowAll" class="search-btn" type="button">Show all restaurants</button></div>
+              <div class="search-field">
+                  <span class="search-icon"><i class="fas fa-search"></i></span>
                   <input type="text" class="search-input" id="inputSearch" placeholder="Search Restaurant" aria-label="search-restaurant">
               </div>
           </div>
-          <div class="content" style="margin-top: 20px;">
-              <div class="content-header">
+          <div class="page-content" style="margin-top: 20px;">
+              <div class="page-heading">
                   <h2>Semua Restoran</h2>
                   <p>Jelajahi daftar terpilih untuk restoran, kafe, dan bar terbaik di dan di sekitar Anda, berdasarkan tren
                   </p>
               </div>
-              <div class="content-body" id="mainContent">
+              <div class="page-main" id="mainContent">
               </div>
           </div>
       </div>`;
@@ -61,7 +61,7 @@ const Home = {
   },
   _renderRestaurants(container, restaurants) {
     if (restaurants.length > 0) {
-      container.innerHTML = '<div class="card-list" id="restaurantList"></div>';
+      container.innerHTML = '<div class="restaurant-grid" id="restaurantList"></div>';
       const restaurantListElement = document.getElementById('restaurantList');
 
       restaurantListElement.innerHTML = '';
